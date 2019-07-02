@@ -1,6 +1,9 @@
 import * as PIXI from 'pixi.js';
+import 'pixi-particles';
 import resources from './resources';
 import MainMenuScene from './scenes/main-menu';
+
+var currentScene = null
 
 class App extends PIXI.Application {
 
@@ -16,18 +19,20 @@ class App extends PIXI.Application {
   }
 
   setupPixi() {
-    const loader = PIXI.Loader.shared;
-    Object.keys(resources).forEach(key => loader.add(key, resources[key]))
-    loader.load((loader, resources) => {
-      this.onLoad()
-    })
+    Object.keys(resources).forEach(key => PIXI.loader.add(key, resources[key]));
+    PIXI.loader.load(() => this.onLoad());
   }
 
   onLoad() {
-    const mainMenuSceneScne = new MainMenuScene(this);
-    app.stage.addChild(mainMenuSceneScne);
+    this.replaceScene(new MainMenuScene(this))
+  }
+
+  replaceScene(scene){
+    currentScene && currentScene.destroy()
+    app.stage.addChild(scene)
+    currentScene = scene
   }
 }
 
-const app = new App();
-window.app = app;
+const app = new App()
+window.app = app

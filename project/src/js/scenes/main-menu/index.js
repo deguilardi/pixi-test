@@ -1,12 +1,13 @@
 import * as PIXI from 'pixi.js'
+import FireEffectScene from '../../scenes/fire-effect';
 
 const btnTextureNormal = PIXI.Texture.from('assets/general/btn-horizontal-normal.png')
 const btnTextureSelected = PIXI.Texture.from('assets/general/btn-horizontal-selected.png')
 
 const btnsMap = [
-  {label: '1. sprites stack', action: ''},
-  {label: '2. random text', action: ''},
-  {label: '3. fire effect', action: ''}
+  {label: 'sprites stack', action: ''},
+  {label: 'random text', action: ''},
+  {label: 'fire effect', action: FireEffectScene}
 ]
 
 var isTouching = false;
@@ -19,7 +20,6 @@ export default class MainMenuScene extends PIXI.Container {
   }
 
   setupUI(){
-    
     const self = this
     const btnOffset = 110
     var i = 0
@@ -35,8 +35,8 @@ export default class MainMenuScene extends PIXI.Container {
         btnElement.y = app.screen.height * 0.5 - btnOffset + ( btnOffset * i );
         btnElement.on('mousedown', self.onBtnDown)
                   .on('touchstart', self.onBtnDown)
-                  .on('mouseup', () => self.onBtnUp(index))
-                  .on('touchend', self.onBtnUp)
+                  .on('mouseup', () => self.onBtnUp(btnElement, index))
+                  .on('touchend', () => self.onBtnUp(btnElement, index))
                   .on('mouseout', self.onBtnMoveOut)
         self.addChild(btnElement)
 
@@ -62,10 +62,11 @@ export default class MainMenuScene extends PIXI.Container {
     isTouching = true
   }
 
-  onBtnUp(index){
-    this.texture = btnTextureNormal
+  onBtnUp(btn, index){
+    btn.texture = btnTextureNormal
     if(isTouching){
-        this.onButtonClick.dispatch(btnsMap[index].action)
+      const scene = new btnsMap[index].action
+      app.replaceScene(scene)
     }
     isTouching = false
   }

@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/deguilardi/pixi-test#readme",
   "dependencies": {
-    "pixi.js": "^5.0.4",
+    "pixi-particles": "^4.1.1",
+    "pixi.js": "^4.8.8",
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2"
   },
