@@ -782,7 +782,7 @@ eval("module.exports = function(module) {\n\tif (!module.webpackPolyfill) {\n\t\
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ \"../../node_modules/pixi.js/lib/pixi.es.js\");\n/* harmony import */ var _resources__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./resources */ \"./resources.js\");\n/* harmony import */ var _scenes_main_menu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./scenes/main-menu */ \"./scenes/main-menu/index.js\");\n\n\n\n\nclass App extends pixi_js__WEBPACK_IMPORTED_MODULE_0__[\"Application\"] {\n\n  constructor() {\n    super()\n    this.setupPixi()\n    this.setupUI()\n  }\n\n  setupUI(){\n    document.body.appendChild(this.view)\n    window.addEventListener('resize', () => this.onResize())\n  }\n\n  setupPixi() {\n    Object.keys(_resources__WEBPACK_IMPORTED_MODULE_1__[\"default\"]).forEach(key => pixi_js__WEBPACK_IMPORTED_MODULE_0__[\"Loader\"].registerPlugin(key, _resources__WEBPACK_IMPORTED_MODULE_1__[\"default\"][key]))\n  }\n\n  onLoad() {\n    const mainMenuSceneScne = new _scenes_main_menu__WEBPACK_IMPORTED_MODULE_2__[\"default\"](this);\n    app.stage.addChild(mainMenuSceneScne);\n  }\n}\n\nconst app = new App();\nwindow.app = app;\n\n//# sourceURL=webpack:///./main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ \"../../node_modules/pixi.js/lib/pixi.es.js\");\n/* harmony import */ var _resources__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./resources */ \"./resources.js\");\n/* harmony import */ var _scenes_main_menu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./scenes/main-menu */ \"./scenes/main-menu/index.js\");\n\n\n\n\nclass App extends pixi_js__WEBPACK_IMPORTED_MODULE_0__[\"Application\"] {\n\n  constructor() {\n    super()\n    this.setupPixi()\n    this.setupUI()\n  }\n\n  setupUI(){\n    document.body.appendChild(this.view)\n    window.addEventListener('resize', () => this.onResize())\n  }\n\n  setupPixi() {\n    const loader = pixi_js__WEBPACK_IMPORTED_MODULE_0__[\"Loader\"].shared;\n    Object.keys(_resources__WEBPACK_IMPORTED_MODULE_1__[\"default\"]).forEach(key => loader.add(key, _resources__WEBPACK_IMPORTED_MODULE_1__[\"default\"][key]))\n    loader.load((loader, resources) => {\n      console.log(resources.general)\n      //this.onLoad()\n    })\n  }\n\n  onLoad() {\n    const mainMenuSceneScne = new _scenes_main_menu__WEBPACK_IMPORTED_MODULE_2__[\"default\"](this);\n    app.stage.addChild(mainMenuSceneScne);\n  }\n}\n\nconst app = new App();\nwindow.app = app;\n\n//# sourceURL=webpack:///./main.js?");
 
 /***/ }),
 
@@ -794,7 +794,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var pixi
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  general: 'assets/general/general.json',\n});\n\n\n//# sourceURL=webpack:///./resources.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  general: 'assets/general/btn-horizontal-normal.png',\n});\n\n\n//# sourceURL=webpack:///./resources.js?");
 
 /***/ }),
 
@@ -806,7 +806,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ 
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return MainMenuScene; });\n/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ \"../../node_modules/pixi.js/lib/pixi.es.js\");\n\n\nclass MainMenuScene extends pixi_js__WEBPACK_IMPORTED_MODULE_0__[\"Container\"] {\n\n  constructor() {\n    super()\n    this.setupUI()\n  }\n\n  setupUI(){\n\n    const btnBG = pixi_js__WEBPACK_IMPORTED_MODULE_0__[\"Texture\"].from('assets/general/btn-horizontal-normal.png')\n    const sprite = new pixi_js__WEBPACK_IMPORTED_MODULE_0__[\"Sprite\"](btnBG)\n    this.addChild(sprite)\n    \n  }\n}\n\n//# sourceURL=webpack:///./scenes/main-menu/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return MainMenuScene; });\n/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ \"../../node_modules/pixi.js/lib/pixi.es.js\");\n\n\nclass MainMenuScene extends pixi_js__WEBPACK_IMPORTED_MODULE_0__[\"Container\"] {\n\n  constructor() {\n    console.log(\"a\")\n    super()\n    this.setupUI()\n  }\n\n  setupUI(){\n\n    console.log(\"b\")\n\n    const btnBG = pixi_js__WEBPACK_IMPORTED_MODULE_0__[\"Texture\"].from('assets/general/btn-horizontal-normal.png')\n    const sprite = new pixi_js__WEBPACK_IMPORTED_MODULE_0__[\"Sprite\"](btnBG)\n    this.addChild(sprite)\n    \n  }\n}\n\n//# sourceURL=webpack:///./scenes/main-menu/index.js?");
 
 /***/ }),
 
