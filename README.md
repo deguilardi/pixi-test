@@ -8,8 +8,10 @@ Create a tool that will allow mixed text and images in an easy way (for example 
 Particles - make a demo that shows an awesome fire effect. Please keep number of images low (max 10 sprites on screen at once). Feel free to use existing libraries how you would use them in a real project.
 
 ### To run the project:
+```
 npm install
 npm start
+```
 
 ### To change host:
 Change the 127.0.0.1 ip on the file package.json
