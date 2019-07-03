@@ -1,7 +1,7 @@
-import * as PIXI from 'pixi.js';
-import 'pixi-particles';
-import resources from './resources';
-import MainMenuScene from './scenes/main-menu';
+import * as PIXI from 'pixi.js'
+import 'pixi-particles'
+import resources from './resources'
+import MainMenuScene from './scenes/main-menu'
 
 var currentScene = null
 

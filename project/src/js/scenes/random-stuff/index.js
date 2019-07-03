@@ -1,5 +1,6 @@
 import * as PIXI from 'pixi.js'
 import MixedText from './mixed-text.js'
+import MainMenuScene from '../main-menu'
 
 const words = ["money", "heart", "project", "softgames", "pixijs"]
 const emojis = ["angel", "eyes", "normal", "tongue", "upside-down"]
@@ -13,6 +14,14 @@ export default class RandomStuffScene extends PIXI.Container {
 
   setupUI(){
     this.mixedText && this.mixedText.destroy()
+
+    const closeButton = new PIXI.Text("close", new PIXI.TextStyle({ fill: '#ffffff' }))
+    closeButton.anchor.set(1, 0)
+    closeButton.x = app.screen.width - 10
+    closeButton.interactive = true
+    closeButton.buttonMode = true
+    closeButton.on('pointerdown', () => app.replaceScene(new MainMenuScene()));
+    this.addChild(closeButton);
 
     const min = 2
     const max = 4

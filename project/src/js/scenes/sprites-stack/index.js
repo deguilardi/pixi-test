@@ -1,5 +1,6 @@
 import * as PIXI from 'pixi.js'
 import 'pixi-timeout'
+import MainMenuScene from '../main-menu'
 
 const NUM_CARDS = 144
 
@@ -13,6 +14,14 @@ export default class SpritesStackScene extends PIXI.Container {
   }
 
   setupUI(){
+    const closeButton = new PIXI.Text("close", new PIXI.TextStyle({ fill: '#ffffff' }))
+    closeButton.anchor.set(1, 0)
+    closeButton.x = app.screen.width - 10
+    closeButton.interactive = true
+    closeButton.buttonMode = true
+    closeButton.on('pointerdown', () => app.replaceScene(new MainMenuScene()));
+    this.addChild(closeButton);
+
     this.setupFpsInfo()
     this.setupCards()
   }

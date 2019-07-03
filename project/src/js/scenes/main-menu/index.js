@@ -32,8 +32,9 @@ export default class MainMenuScene extends PIXI.Container {
         const btnElement = new PIXI.Sprite(btnTextureNormal)
         btnElement.btnNormal = true
         btnElement.interactive = true
-        btnElement.x = app.screen.width * 0.5;
+        btnElement.buttonMode = true
         btnElement.anchor.set(0.5);
+        btnElement.x = app.screen.width * 0.5;
         btnElement.y = app.screen.height * 0.5 - btnOffset + ( btnOffset * i )
         btnElement.on('mousedown', self.onBtnDown)
                   .on('touchstart', self.onBtnDown)
