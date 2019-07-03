@@ -1,11 +1,12 @@
 import * as PIXI from 'pixi.js'
+import SpritesStackScene from '../../scenes/sprites-stack';
 import FireEffectScene from '../../scenes/fire-effect';
 
 const btnTextureNormal = PIXI.Texture.from('assets/general/btn-horizontal-normal.png')
 const btnTextureSelected = PIXI.Texture.from('assets/general/btn-horizontal-selected.png')
 
 const btnsMap = [
-  {label: 'sprites stack', action: ''},
+  {label: 'sprites stack', action: SpritesStackScene},
   {label: 'random text', action: ''},
   {label: 'fire effect', action: FireEffectScene}
 ]

@@ -15,7 +15,15 @@ class App extends PIXI.Application {
 
   setupUI(){
     document.body.appendChild(this.view)
-    window.addEventListener('resize', () => this.onResize())
+
+    // fullscreen
+    window.LP = window.innerWidth > window.innerHeight ? a => a : (a, b) => b
+    const mw = LP(window.innerWidth * 640 / window.innerHeight, window.innerWidth * 960 / window.innerHeight)
+    const mh = LP(window.innerHeight * 960 / window.innerWidth, window.innerHeight * 640 / window.innerWidth)
+    const scale = Math.max(mw / window.innerWidth, mh / window.innerHeight)
+    this.renderer.resize(Math.ceil(window.innerWidth * scale), Math.ceil(window.innerHeight * scale))
+    this.view.style.width = `${window.innerWidth}px`
+    this.view.style.height = `${window.innerHeight}px`
   }
 
   setupPixi() {
