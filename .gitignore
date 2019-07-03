@@ -2,9 +2,9 @@
 /**/*.log
 /**/.DS_Store
 
-/project/package-lock.json
-/project/package-lock.json
-/project/yarn.lock
+/package-lock.json
+/package-lock.json
+/yarn.lock
 
 .vscode
 .DS_Store
