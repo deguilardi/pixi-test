@@ -33,7 +33,7 @@ export default class MainMenuScene extends PIXI.Container {
         btnElement.interactive = true
         btnElement.x = app.screen.width * 0.5;
         btnElement.anchor.set(0.5);
-        btnElement.y = app.screen.height * 0.5 - btnOffset + ( btnOffset * i );
+        btnElement.y = app.screen.height * 0.5 - btnOffset + ( btnOffset * i )
         btnElement.on('mousedown', self.onBtnDown)
                   .on('touchstart', self.onBtnDown)
                   .on('mouseup', () => self.onBtnUp(btnElement, index))

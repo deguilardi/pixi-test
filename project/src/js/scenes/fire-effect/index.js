@@ -2,7 +2,6 @@ import * as PIXI from 'pixi.js'
 import * as particles from 'pixi-particles';
 
 var config = require("./flame.json")
-
 var emitter
 
 export default class FireEffectScene extends PIXI.Container {
@@ -13,29 +12,21 @@ export default class FireEffectScene extends PIXI.Container {
   }
 
   setupUI(){
-
-    const emitterOwner = new PIXI.Container()
-    emitterOwner.x = app.screen.width * 0.5
-    emitterOwner.y = app.screen.height * 0.5
-    this.addChild(emitterOwner);
-
-    console.log(config)
-
-
+    const emitterHolder = new PIXI.Container()
+    emitterHolder.x = app.screen.width * 0.5
+    emitterHolder.y = app.screen.height * 0.5
+    this.addChild(emitterHolder)
 
     emitter = new particles.Emitter(
-      emitterOwner,
+      emitterHolder,
       [PIXI.Texture.from('assets/particles/flame-1.png'),
        PIXI.Texture.from('assets/particles/flame-2.png')],
       config
     )
     emitter.particleBlendMode = PIXI.BLEND_MODES.ADD;
-
-
   }
 
   onUpdate(dt) {
-    emitter.update(dt * 0.001);
+    emitter.update(dt * 0.001)
   }
-
 }
