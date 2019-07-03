@@ -4,8 +4,6 @@ import MainMenuScene from '../main-menu'
 
 const NUM_CARDS = 144
 
-var cards = []
-
 export default class SpritesStackScene extends PIXI.Container {
   constructor() {
     super()
@@ -47,12 +45,13 @@ export default class SpritesStackScene extends PIXI.Container {
   setupCards(){
     const cardTexture = PIXI.Texture.from('assets/general/card.png')
     const offset = 5
+    this.cards = []
     for (var i = 0, l = NUM_CARDS; i < l; i++) {
       const cardElement = new PIXI.Sprite(cardTexture)
       cardElement.anchor.set(0.5)
       cardElement.x = app.screen.width * 0.2
       cardElement.y = app.screen.height * 0.5 -( offset * NUM_CARDS / 2 ) + offset * i
-      cards.push(cardElement)
+      this.cards.push(cardElement)
       this.addChild(cardElement)
       this.moveElementTo(cardElement, app.screen.width * 0.8, 2, NUM_CARDS - 1 * i)
     }
@@ -60,7 +59,7 @@ export default class SpritesStackScene extends PIXI.Container {
 
   onUpdate(dt) {
     for (var i = 0, l = NUM_CARDS; i < l; i++) {
-      var card = cards[i]
+      var card = this.cards[i]
       if(card.animation.active){
         if(card.animation.delay > 0){
           card.animation.delay -= dt
